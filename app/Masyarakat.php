@@ -32,4 +32,14 @@ class Masyarakat extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function pengaduan()
+    {
+        return $this->hasMany(Pengaduan::class, 'masyarakat_nik', 'nik');
+    }
+    
+    public function pengaduans() 
+    {
+        return $this->belongsTo(Transaction::class, 'id', 'id');
+    }
 }
