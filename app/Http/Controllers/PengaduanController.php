@@ -44,12 +44,15 @@ class PengaduanController extends Controller
             'foto' => 'required',
             'status' => 'required'
     	]);
+
+        $imgName = $request->foto->getClientOriginalName() . '-' . time() . '.' . $request->foto->extension();
+        $request->foto->move(public_path('image'), $imgName);
  
         Pengaduan::create([
     		'tgl_pengaduan' => $request->tgl_pengaduan,
     		'masyarakat_nik' => $request->masyarakat_nik,
             'isi_laporan' => $request->isi_laporan,
-            'foto' => $request->foto,
+            'foto' => $imgName,
             'status' => $request->status,
     	]);
  
