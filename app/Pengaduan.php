@@ -14,4 +14,9 @@ class Pengaduan extends Model
         return $this->belongsTo(Masyarakat::class, 'masyarakat_nik', 'nik');
     }
 
+    // public function details() 
+    // {
+    //     return $this->hasMany(Pengaduan::class, 'id', 'id');
+    // }
+
 }

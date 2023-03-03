@@ -156,7 +156,7 @@
                                                             <div class="col-sm-10">
                                                                 <b>:</b> 
                                                                 @if ($data_pengaduan->foto)
-                                                                    <img src="{{ Storage::url($data_pengaduan->foto) }}" alt="Foto Pengaduan" class="embed-responsive">
+                                                                    <img src="{{ asset('image/'. $data_pengaduan->foto ) }}" alt="Foto Pengaduan" class="embed-responsive">
                                                                 @else
                                                                     <a href="#" class="badge badge-danger">Tidak Ada Foto</a>
                                                                 @endif
@@ -179,7 +179,7 @@
                                                 </form>
                                         </div>
                                     </div>
-                                </div>
+                            </div>
 
                             <!-- end isi -->
 

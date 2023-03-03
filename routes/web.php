@@ -24,7 +24,7 @@ Route::group([
     'prefix' => config('masyarakat.prefix'),
     // 'namespace' => 'App\Http\Controllers',
 ], function(){
-   
+
     Route::post('register/store','RegisterController@RegisterMasyarakat')->name('masyarakat.register');
     Route::get('login', 'LoginMasyarakatController@formlogin')->name('masyarakat.login');
     Route::post('login', 'LoginMasyarakatController@login');
@@ -32,8 +32,7 @@ Route::group([
     Route::middleware(['auth:masyarakat'])->group(function(){
         Route::post('logout','LoginMasyarakatController@logout')->name('masyarakat.logout');
         Route::view('/','dashboard')->name('dashboard');
-        Route::get('/laporanku/show/{id}','PengaduanController@show')->name('laporanku');
-        // Route::view('/','beranda')->name('beranda');
+        // Route::get('/laporanku/show/{id}','PengaduanController@show')->name('laporanku');
         Route::view('/post','data-post')->name('post')->middleware('can:level, "masyarakat","petugas"');
         Route::view('/masyarakat','data-masyarakat')->name('masyarakat')->middleware('can:level, "masyarakat"'); // hanya bisa di akses oleh masyarakat
         Route::get('/pengaduan','PengaduanController@index')->name('masyarakat.index');
@@ -43,4 +42,16 @@ Route::group([
 });
 
 // Route::get('/petugas','PetugasController@index');
-Route::resource('petugas', 'PetugasController');
+// Route::resource('petugas', 'PetugasController');
+//Admin//Petugas
+Route::prefix('admin')
+    // ->middleware(['auth', 'admin'])
+    ->group(function() {
+        Route::get('/', 'DashboardController@index')->name('dashboard');
+        Route::resource('tanggapan', 'TanggapanController');
+        Route::resource('petugas', 'PetugasController');
+
+        // Route::get('laporan', 'AdminController@laporan');
+        // Route::get('laporan/cetak', 'AdminController@cetak');
+        // Route::get('pengaduan/cetak/{id}', 'AdminController@pdf');
+});

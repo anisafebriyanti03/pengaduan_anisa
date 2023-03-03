@@ -13,6 +13,7 @@
                                             <table class="table table-bordered table-hover table-striped  ">
                                                 <thead>
                                                     <tr class="table-secondary">
+                                                        <th>No</th>
                                                         <th>NIK</th>
                                                         <th>Nama Petugas</th>
                                                         <th>Email</th>
