@@ -41,3 +41,6 @@ Route::group([
         Route::get('/pengaduan/show/{id}', 'PengaduanController@show');
     });
 });
+
+// Route::get('/petugas','PetugasController@index');
+Route::resource('petugas', 'PetugasController');
